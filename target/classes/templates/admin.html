@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+</head>
+<body>
+
+<a th:href="@{http://localhost:8080/admin/new}">Add User</a>
+<br>
+<br>
+
+<div>
+    <table border="1" bordercolor="black">
+        <tr>
+            <th>Login</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Update</th>
+            <th>Remove</th>
+        </tr>
+        <tr th:each="element : ${users}">
+            <td th:utext="${element.username}"></td>
+            <td th:utext="${element.email}"></td>
+            <td th:utext="${element.roles}"></td>
+            <td>
+                <button><a th:href="'/admin/'+ ${element.id}+'/edit'">Edit</a></button>
+            </td>
+            <td>
+                <button><a th:href="'/admin/'+ ${element.id}+'/delete'">Delete</a></button>
+            </td>
+        </tr>
+    </table>
+</div>
+<br>
+
+<button><a th:href="@{/logout}">Logout</a></button>
+
+</body>
+</html>
